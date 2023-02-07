@@ -12,10 +12,10 @@ class MomentRepository implements IMomentRepository {
   }: ICreateMomentDTO): Promise<IMoment> {
     try {
       const moment: IMoment = {
+        uuid: uuidv4(),
         title,
         description,
         image,
-        uuid: uuidv4(),
       };
 
       await Moment.create(moment);
@@ -51,10 +51,6 @@ class MomentRepository implements IMomentRepository {
     } catch (error) {
       return error;
     }
-  }
-
-  async commentMomentById(id: string): Promise<IMoment> {
-    return await this.momentById(id);
   }
 
   async findByTitle(title: string): Promise<IMoment> {

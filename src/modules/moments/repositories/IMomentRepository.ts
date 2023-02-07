@@ -16,5 +16,4 @@ export interface IMomentRepository {
   listMoments: () => Promise<IMoment[]>;
   momentById: (id: string) => Promise<IMoment>;
   deleteMomentById: (id: string) => Promise<void>;
-  commentMomentById: (id: string) => Promise<IMoment>;
 }

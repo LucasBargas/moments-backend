@@ -1,3 +1,4 @@
+import { IMoment } from '../../models/IMoment';
 import { IMomentRepository } from '../../repositories/IMomentRepository';
 
 interface IRequest {
@@ -9,7 +10,7 @@ interface IRequest {
 class CreateMomentUseCase {
   constructor(private momentRepository: IMomentRepository) {}
 
-  async execute({ title, description, image }: IRequest) {
+  async execute({ title, description, image }: IRequest): Promise<IMoment> {
     const momentAlreadyExists = await this.momentRepository.findByTitle(title);
 
     if (!title) throw new Error('O título é obrigatório');
