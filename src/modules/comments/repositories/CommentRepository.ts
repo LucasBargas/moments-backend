@@ -23,6 +23,15 @@ class CommentRepository implements ICommentRepository {
       return error;
     }
   }
+
+  async listComments(momentId: string): Promise<IComment[]> {
+    try {
+      const comments = await Comment.find({ momentId });
+      return comments;
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 export default CommentRepository;

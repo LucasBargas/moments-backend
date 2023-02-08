@@ -12,4 +12,5 @@ export interface ICommentRepository {
     text,
     momentId,
   }: ICreateCommentDTO) => Promise<IComment>;
+  listComments: (momentId: string) => Promise<IComment[]>;
 }
