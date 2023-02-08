@@ -13,4 +13,5 @@ export interface ICommentRepository {
     momentId,
   }: ICreateCommentDTO) => Promise<IComment>;
   listComments: (momentId: string) => Promise<IComment[]>;
+  deleteCommentById: (id: string) => Promise<void>;
 }
