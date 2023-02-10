@@ -7,6 +7,7 @@ const momentSchema = new Schema<IMoment>(
     title: { type: String, required: true },
     description: { type: String, required: true },
     image: { type: String, required: true },
+    comments: Array,
   },
   { timestamps: true },
 );

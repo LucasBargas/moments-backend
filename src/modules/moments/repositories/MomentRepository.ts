@@ -16,6 +16,7 @@ class MomentRepository implements IMomentRepository {
         title,
         description,
         image,
+        comments: [],
       };
 
       await Moment.create(moment);
