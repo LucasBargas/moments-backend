@@ -45,6 +45,26 @@ class MomentRepository implements IMomentRepository {
     }
   }
 
+  async updateMoment({
+    id,
+    title,
+    description,
+    image,
+  }: ICreateMomentDTO): Promise<IMoment> {
+    try {
+      const moment = await this.momentById(id);
+
+      moment.title = title;
+      moment.description = description;
+      moment.image = image;
+
+      await moment.save();
+      return moment;
+    } catch (error) {
+      return error;
+    }
+  }
+
   async deleteMomentById(id: string): Promise<void> {
     try {
       const objId = new mongoose.Types.ObjectId(id);

@@ -4,6 +4,7 @@ import imageUpload from '../middlewares/imageUpload';
 import listMomentsController from '../modules/moments/useCases/listMoments';
 import momentByIdController from '../modules/moments/useCases/momentById';
 import deleteMomentByIdController from '../modules/moments/useCases/deleteMomentById';
+import updateMomentController from '../modules/moments/useCases/updateMoment';
 
 const router = express.Router();
 
@@ -24,6 +25,14 @@ router.post(
   imageUpload.single('image'),
   async (req: Request, res: Response) => {
     return await createMomentController.handle(req, res);
+  },
+);
+
+router.patch(
+  '/:id',
+  imageUpload.single('image'),
+  async (req: Request, res: Response) => {
+    return await updateMomentController.handle(req, res);
   },
 );
 
