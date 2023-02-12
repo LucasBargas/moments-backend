@@ -1,6 +1,7 @@
 import { IComment } from '../models/IComment';
 
 export interface ICreateCommentDTO {
+  uuid: string;
   name: string;
   text: string;
   momentId: string;

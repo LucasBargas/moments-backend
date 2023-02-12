@@ -1,6 +1,5 @@
 import { IComment } from '../models/IComment';
 import { ICommentRepository, ICreateCommentDTO } from './ICommentRepository';
-import { v4 as uuidv4 } from 'uuid';
 import Comment from '../models/Comment';
 import MomentRepository from '../../moments/repositories/MomentRepository';
 import Moment from '../../moments/models/Moment';
@@ -9,6 +8,7 @@ import mongoose from 'mongoose';
 class CommentRepository implements ICommentRepository {
   constructor(private momentRepository: MomentRepository) {}
   async createComment({
+    uuid,
     name,
     text,
     momentId,
@@ -17,7 +17,7 @@ class CommentRepository implements ICommentRepository {
       const moment = await this.momentRepository.momentById(momentId);
 
       const comment: IComment = {
-        uuid: uuidv4(),
+        uuid,
         name,
         text,
         momentId,

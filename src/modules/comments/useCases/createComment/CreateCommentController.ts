@@ -5,11 +5,12 @@ class CreateCommentController {
   constructor(private createCommentUseCase: CreateCommentUseCase) {}
 
   async handle(req: Request, res: Response) {
-    const { name, text } = req.body;
+    const { uuid, name, text } = req.body;
     const { momentId } = req.params;
 
     try {
       const comment = await this.createCommentUseCase.execute({
+        uuid,
         name,
         text,
         momentId,
