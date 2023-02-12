@@ -12,10 +12,12 @@ class UpdateMomentUseCase {
   constructor(private momentRepository: IMomentRepository) {}
 
   async execute({ id, title, description, image }: IRequest): Promise<IMoment> {
+    const moment = await this.momentRepository.momentById(id);
     const momentAlreadyExists = await this.momentRepository.findByTitle(title);
 
     if (!title) throw new Error('O título é obrigatório');
-    if (momentAlreadyExists) throw new Error('Este título já está em uso.');
+    if (title !== moment.title && momentAlreadyExists)
+      throw new Error('Este título já está em uso.');
     if (!description) throw new Error('A descrição é obrigatória.');
     if (!image) throw new Error('Você precisa adicionar uma foto.');
 

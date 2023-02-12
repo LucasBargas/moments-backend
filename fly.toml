@@ -1,4 +1,4 @@
-# fly.toml file generated for moments-lbs-api on 2023-02-07T12:04:33-03:00
+# fly.toml file generated for moments-lbs-api on 2023-02-11T18:56:20-03:00
 
 app = "moments-lbs-api"
 kill_signal = "SIGINT"
